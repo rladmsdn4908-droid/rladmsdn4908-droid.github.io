@@ -18,7 +18,8 @@
 body{margin:0;background:#FFFFFF}
 a{color:#111111;text-decoration:none}a:hover{color:#6B6B6B}
 img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;pointer-events:none}
-@media (max-width: 760px){.hero-row{flex-wrap:wrap-reverse !important;padding:0 24px 32px !important}.hero-row figure{flex:1 1 100% !important}}
+.m-br{display:none}
+@media (max-width: 760px){.hero-row{flex-wrap:wrap-reverse !important;padding:0 24px 32px !important}.hero-row figure{flex:1 1 100% !important}.hero-text{max-width:100% !important}.hero-text h1{font-size:32px !important}.m-br{display:inline}}
 </style>
 <link rel="stylesheet" href="site.css">
 </head>
@@ -42,8 +43,8 @@ img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-tou
       </nav>
     </header>
     <div class="hero-row" style="width: 100%; max-width: 1440px; margin: 0 auto; box-sizing: border-box; flex: 1 1 auto; min-height: 0; display: flex; flex-wrap: nowrap; gap: 40px 48px; align-items: center; padding: 0 80px 32px">
-      <div style="flex: 0 1 auto; min-width: 200px; max-width: 48%; display: flex; flex-direction: column; gap: 28px; word-break: keep-all">
-        <h1 style="margin: 0; font-family: 'Noto Serif KR', serif; font-weight: 300; font-size: 42px; line-height: 1.35; letter-spacing: 0.02em; color: #111111">형상은 무너지고, 흔적은 자란다</h1>
+      <div class="hero-text" style="flex: 0 1 auto; min-width: 200px; max-width: 48%; display: flex; flex-direction: column; gap: 28px; word-break: keep-all">
+        <h1 style="margin: 0; font-family: 'Noto Serif KR', serif; font-weight: 300; font-size: 42px; line-height: 1.35; letter-spacing: 0.02em; color: #111111">형상은 무너지고,<br class="m-br"> 흔적은 자란다</h1>
         <a href="exhibitions.html" style="align-self: flex-start; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; border-bottom: 1px solid #111111; padding: 12px 0 6px">VIEW EXHIBITIONS →</a>
       </div>
       <figure style="flex: 1 1 0; min-width: 0; margin: 0; display: flex; justify-content: center; align-items: center">
