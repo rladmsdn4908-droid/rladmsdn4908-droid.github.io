@@ -18,6 +18,7 @@
 body{margin:0;background:#FFFFFF}
 a{color:#111111;text-decoration:none}a:hover{color:#6B6B6B}
 img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;pointer-events:none}
+@media (max-width: 640px){.viewer{padding:16px 8px 20px !important}.v-row{position:relative;gap:0 !important}.v-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:44px !important;height:44px !important;border-radius:50%;background:rgba(255,255,255,0.8) !important}.v-prev{left:4px}.v-next{right:4px}.v-row img{max-height:calc(100vh - 170px) !important}}
 </style>
 <link rel="stylesheet" href="site.css">
 </head>
@@ -92,13 +93,13 @@ img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-tou
   </footer>
 
   <sc-if value="{{viewer.on}}" hint-placeholder-val="{{ false }}">
-    <div role="dialog" aria-modal="true" aria-label="작품 크게 보기" style="position: fixed; inset: 0; z-index: 100; background: #FFFFFF; display: flex; flex-direction: column; gap: 16px; padding: 20px 32px 28px; box-sizing: border-box">
+    <div class="viewer" role="dialog" aria-modal="true" aria-label="작품 크게 보기" style="position: fixed; inset: 0; z-index: 100; background: #FFFFFF; display: flex; flex-direction: column; gap: 16px; padding: 20px 32px 28px; box-sizing: border-box">
       <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px">
         <span style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.2em; color: #6B6B6B">{{viewer.count}}</span>
         <button type="button" onClick="{{viewer.close}}" style="min-height: 44px; padding: 0 4px; background: none; border: 0; cursor: pointer; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; color: #111111">CLOSE</button>
       </div>
-      <div style="flex: 1 1 auto; min-height: 0; display: flex; align-items: center; gap: 16px">
-        <button type="button" onClick="{{viewer.prev}}" aria-label="이전 작품" style="flex: 0 0 auto; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background: none; border: 0; cursor: pointer; color: #111111">
+      <div class="v-row" onTouchStart="{{viewer.touchStart}}" onTouchEnd="{{viewer.touchEnd}}" style="flex: 1 1 auto; min-height: 0; display: flex; align-items: center; gap: 16px">
+        <button type="button" class="v-arrow v-prev" onClick="{{viewer.prev}}" aria-label="이전 작품" style="flex: 0 0 auto; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background: none; border: 0; cursor: pointer; color: #111111">
           <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round"><path d="M15 4 L7 12 L15 20"></path></svg>
         </button>
         <div style="flex: 1 1 auto; min-width: 0; height: 100%; display: flex; align-items: center; justify-content: center">
@@ -113,7 +114,7 @@ img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-tou
             </div>
           </sc-if>
         </div>
-        <button type="button" onClick="{{viewer.next}}" aria-label="다음 작품" style="flex: 0 0 auto; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background: none; border: 0; cursor: pointer; color: #111111">
+        <button type="button" class="v-arrow v-next" onClick="{{viewer.next}}" aria-label="다음 작품" style="flex: 0 0 auto; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background: none; border: 0; cursor: pointer; color: #111111">
           <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round"><path d="M9 4 L17 12 L9 20"></path></svg>
         </button>
       </div>
@@ -246,6 +247,8 @@ class Component extends DCLogic {
       },
       leave: () => this.setState({ lens: null }),
       block: (e) => { e.preventDefault(); },
+      touchStart: (e) => { this._vx = e.touches && e.touches[0] ? e.touches[0].clientX : null; },
+      touchEnd: (e) => { if (this._vx == null || !e.changedTouches) return; const dx = e.changedTouches[0].clientX - this._vx; this._vx = null; if (dx > 40) this.setState({ open: (oi - 1 + n) % n, lens: null }); else if (dx < -40) this.setState({ open: (oi + 1) % n, lens: null }); },
       on: true,
       count: (oi + 1) + ' / ' + n,
       title: cur.title, meta: cur.meta, size: cur.size, img: cur.img, ratio: cur.ratio,
