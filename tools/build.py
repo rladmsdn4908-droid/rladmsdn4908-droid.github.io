@@ -11,15 +11,18 @@ PAGES = {
     'CV.dc.html': 'cv.html',
     'Contact.dc.html': 'contact.html',
 }
+BASE = 'https://rladmsdn4908-droid.github.io/'
 DESC = '화가 김은우의 포트폴리오. 손과 잡초의 형상을 통해 관계가 생겨나고 변해가는 과정을 그린다.'
 
-def convert(src):
+def convert(src, outname):
     m_helmet = re.search(r'<helmet>(.*?)</helmet>', src, re.S)
     helmet = m_helmet.group(1).strip() if m_helmet else ''
     body = re.search(r'<x-dc>(.*)</x-dc>', src, re.S).group(1)
     body = re.sub(r'<helmet>.*?</helmet>', '', body, flags=re.S).strip()
     script = re.search(r'<script type="text/x-dc"[^>]*>(.*?)</script>', src, re.S).group(1).strip()
     title = re.search(r'<title>(.*?)</title>', src, re.S).group(1)
+    if outname == 'index.html': title = '김은우 포트폴리오'
+    url = BASE + ('' if outname == 'index.html' else outname)
     html = f'''<!doctype html>
 <html lang="ko">
 <head>
@@ -29,6 +32,12 @@ def convert(src):
 <meta name="description" content="{DESC}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{DESC}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{BASE}og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 {helmet}
 <link rel="stylesheet" href="site.css">
 </head>
@@ -53,7 +62,7 @@ def convert(src):
 os.makedirs(OUT, exist_ok=True)
 for a, b in PAGES.items():
     src = open(os.path.join(SRC, a), encoding='utf-8').read()
-    out = convert(src)
+    out = convert(src, b)
     assert '_blob' not in out and '.dc.html' not in out, a
     open(os.path.join(OUT, b), 'w', encoding='utf-8').write(out)
     print(a, '->', b, len(out))
