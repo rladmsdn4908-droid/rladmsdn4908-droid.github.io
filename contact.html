@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김은우 — 소개 · 연락처</title>
+<meta name="description" content="화가 김은우의 포트폴리오. 손과 잡초의 형상을 통해 관계가 생겨나고 변해가는 과정을 그린다.">
+<meta property="og:title" content="김은우 — 소개 · 연락처">
+<meta property="og:description" content="화가 김은우의 포트폴리오. 손과 잡초의 형상을 통해 관계가 생겨나고 변해가는 과정을 그린다.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=Noto+Serif+KR:wght@300;400&amp;family=Jost:wght@300;400&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#111111;text-decoration:none}a:hover{color:#6B6B6B}
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<template id="dc">
+<div style="background: #FFFFFF; color: #111111; font-family: 'Noto Serif KR', 'Cormorant Garamond', serif; font-weight: 300; word-break: keep-all">
+
+  <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; padding: 32px 80px; border-bottom: 1px solid #E2E2E2">
+    <a href="index.html" style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; padding: 14px 0">MAIN</a>
+    <nav style="display: flex; flex-wrap: wrap; gap: 48px; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em">
+      <a href="works.html" style="padding: 14px 0">WORKS</a>
+      <a href="exhibitions.html" style="padding: 14px 0">EXHIBITIONS</a>
+      <a href="text.html" style="padding: 14px 0">TEXT</a>
+      <a href="cv.html" style="padding: 14px 0">CV</a>
+      <a href="contact.html" style="padding: 14px 0; border-bottom: 1px solid #111111">CONTACT</a>
+    </nav>
+  </header>
+
+  <main style="max-width: 1600px; margin: 0 auto; padding: 96px 80px 160px; display: flex; flex-wrap: wrap; gap: 64px 96px; align-items: flex-start">
+    <div style="flex: 1 1 440px; max-width: 760px; display: flex; flex-direction: column; gap: 72px">
+      <section style="display: flex; flex-direction: column; gap: 28px">
+        <span style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.32em; color: #6B6B6B">ARTIST · 작가</span>
+        <h1 style="margin: 0; font-family: 'Noto Serif KR', serif; font-weight: 300; font-size: 36px; line-height: 1.2; letter-spacing: 0.16em">김은우</h1>
+        <span style="align-self: flex-start; font-family: 'Jost', sans-serif; font-weight: 400; font-size: 16px; letter-spacing: 0.34em; color: #111111; border-bottom: 1px solid #111111; padding-bottom: 8px">PAINTER</span>
+      </section>
+
+      <section style="display: flex; flex-direction: column; border-top: 1px solid #111111">
+        <h2 style="margin: 0; padding: 24px 0 12px; font-family: 'Jost', sans-serif; font-weight: 400; font-size: 11px; letter-spacing: 0.32em; color: #6B6B6B">CONTACT · 연락처</h2>
+        <dl style="margin: 0; display: flex; flex-direction: column">
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 40px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid #E2E2E2">
+            <dt style="flex: 0 0 120px; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.24em; color: #6B6B6B">E-MAIL</dt>
+            <dd style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 30px"><a href="mailto:rladmsdn4908@naver.com">rladmsdn4908@naver.com</a></dd>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 40px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid #E2E2E2">
+            <dt style="flex: 0 0 120px; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.24em; color: #6B6B6B">INSTAGRAM</dt>
+            <dd style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 30px"><a href="https://instagram.com/nunu.road">@nunu.road</a></dd>
+          </div>
+        </dl>
+      </section>
+    </div>
+  </main>
+
+  <footer style="background: #111111; color: #B5B0A8; padding: 48px 80px">
+    <div style="max-width: 1600px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.2em">
+      <span>© 2026 김은우</span>
+      <span style="display: flex; flex-wrap: wrap; gap: 8px 32px">
+        <a href="mailto:rladmsdn4908@naver.com" style="color: #FFFFFF">rladmsdn4908@naver.com</a>
+        <a href="https://instagram.com/nunu.road" style="color: #FFFFFF; letter-spacing: 0.1em">INSTAGRAM @nunu.road</a>
+      </span>
+    </div>
+  </footer>
+</div>
+</template>
+<div id="dc-root"></div>
+<script src="dc.js"></script>
+<script>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

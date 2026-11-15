@@ -1,0 +1,12 @@
+/* 휴대폰 화면 보정 (공개용 사이트 전용) */
+@media (max-width: 640px) {
+  header, main, footer, section { padding-left: 24px !important; padding-right: 24px !important; }
+  #dc-root header { padding-top: 16px !important; padding-bottom: 16px !important; }
+  #dc-root nav { gap: 4px 22px !important; }
+  #dc-root [style*="flex"] { min-width: 0; }
+  #dc-root h1[style*="font-size: 72px"], #dc-root h1[style*="font-size: 64px"] { font-size: 48px !important; }
+  #dc-root h1[style*="font-size: 88px"] { font-size: 40px !important; line-height: 1.1 !important; }
+  #dc-root h2[style*="font-size: 56px"] { font-size: 40px !important; }
+  #dc-root a[href^="mailto"][style*="font-size: 48px"] { font-size: 7vw !important; }
+  #dc-root [style*="minmax(520px"] { grid-template-columns: 1fr !important; }
+}

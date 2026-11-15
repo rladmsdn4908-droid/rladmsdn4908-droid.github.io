@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김은우 — 전시</title>
+<meta name="description" content="화가 김은우의 포트폴리오. 손과 잡초의 형상을 통해 관계가 생겨나고 변해가는 과정을 그린다.">
+<meta property="og:title" content="김은우 — 전시">
+<meta property="og:description" content="화가 김은우의 포트폴리오. 손과 잡초의 형상을 통해 관계가 생겨나고 변해가는 과정을 그린다.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=Noto+Serif+KR:wght@300;400&amp;family=Jost:wght@300;400&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#111111;text-decoration:none}a:hover{color:#6B6B6B}
+img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;pointer-events:none}
+.gal-ui{transition:opacity .35s ease}
+@media (hover: none){.gal-ui{opacity:1 !important}}
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<template id="dc">
+<div style="background: #FFFFFF; color: #111111; font-family: 'Noto Serif KR', 'Cormorant Garamond', serif; font-weight: 300">
+
+  <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; padding: 32px 80px; border-bottom: 1px solid #E2E2E2">
+    <a href="index.html" style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; padding: 14px 0">MAIN</a>
+    <nav style="display: flex; flex-wrap: wrap; gap: 48px; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em">
+      <a href="works.html" style="padding: 14px 0">WORKS</a>
+      <a href="exhibitions.html" style="padding: 14px 0; border-bottom: 1px solid #111111">EXHIBITIONS</a>
+      <a href="text.html" style="padding: 14px 0">TEXT</a>
+      <a href="cv.html" style="padding: 14px 0">CV</a>
+      <a href="contact.html" style="padding: 14px 0">CONTACT</a>
+    </nav>
+  </header>
+
+  <main style="max-width: 1600px; margin: 0 auto; padding: 96px 80px 160px; display: flex; flex-wrap: wrap; gap: 64px 80px; align-items: flex-start">
+
+    <aside style="flex: 1 1 240px; max-width: 280px; display: flex; flex-direction: column; gap: 48px">
+      <div style="display: flex; flex-direction: column; gap: 16px">
+        <span style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.32em; color: #6B6B6B">EXHIBITIONS · 전시</span>
+        <h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 64px; line-height: 1">Exhibitions</h1>
+      </div>
+      <div role="group" aria-label="전시 메뉴" style="display: flex; flex-direction: column; border-top: 1px solid #111111">
+        <sc-for list="{{menu}}" as="m" hint-placeholder-count="4">
+          <button type="button" onClick="{{m.pick}}" style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px; background: none; border: none; border-bottom: 1px solid #E2E2E2; padding: 14px 0; min-height: 52px; cursor: pointer; text-align: left; font-family: 'Noto Serif KR', serif; font-size: 14px; line-height: 1.5; color: {{m.color}}">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 15px">{{m.year}}</span>
+            <span>{{m.label}}</span>
+          </button>
+        </sc-for>
+      </div>
+    </aside>
+
+    <div style="flex: 999 1 720px; min-width: 0; display: flex; flex-direction: column; gap: 140px">
+      <sc-if value="{{show26}}" hint-placeholder-val="{{ true }}">
+        <!-- 2026 청구전 -->
+        <article style="display: flex; flex-direction: column; gap: 112px">
+          <div style="display: flex; flex-wrap: wrap; gap: 48px 80px; align-items: flex-start">
+            <div style="flex: 1 1 300px; max-width: 360px; display: flex; flex-direction: column; gap: 28px; border-top: 1px solid #111111; padding-top: 28px">
+              <div style="display: flex; justify-content: space-between; align-items: baseline">
+                <span style="font-family: 'Cormorant Garamond', serif; font-size: 32px">2026</span>
+                <span style="font-family: 'Jost', 'Noto Serif KR', sans-serif; font-size: 12px; letter-spacing: 0.2em; color: #6B6B6B">석사학위청구전</span>
+              </div>
+              <h2 style="margin: 0; font-family: 'Noto Serif KR', serif; font-weight: 300; font-size: 38px; line-height: 1.4">형상은 무너지고,<br>흔적은 자란다</h2>
+              <img src="images/e0a4407b799d1ca1ad50be298ad4c29f.jpg" alt="석사학위청구전 포스터" style="display: block; width: 220px; height: auto; border: 1px solid #E2E2E2">
+              <dl style="margin: 0; display: grid; grid-template-columns: 88px 1fr; gap: 12px 16px; font-size: 15px; line-height: 1.6">
+                <dt style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.2em; color: #6B6B6B; padding-top: 4px">VENUE</dt>
+                <dd style="margin: 0">경희대학교 미술관 KUMA 3F</dd>
+                <dt style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.2em; color: #6B6B6B; padding-top: 4px">DATES</dt>
+                <dd style="margin: 0">2026. 11. 04 — 11. 07</dd>
+                <dt style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.2em; color: #6B6B6B; padding-top: 4px">HOURS</dt>
+                <dd style="margin: 0">09:00 — 18:00</dd>
+              </dl>
+              <p style="margin: 0; font-size: 16px; line-height: 1.95">손과 잡초라는 두 형상을 통해 관계가 생겨나고 변해가는 과정을 담아낸 전시. 두 형상이 관계를 맺어가는 과정을 접촉, 중첩, 침투, 침식, 생성, 해체의 여섯 단계로 펼쳐 놓는다.</p>
+              <span style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.12em; color: #6B6B6B">경희대학교 일반대학원 미술학과 석사학위청구전</span>
+            </div>
+
+            <div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+            <div class="gal" onMouseMove="{{g26.wake}}" onMouseLeave="{{g26.sleep}}" onTouchStart="{{g26.touchStart}}" onTouchEnd="{{g26.touchEnd}}" style="position: relative; aspect-ratio: 3 / 2; background: #F4F2EE; overflow: hidden">
+              <img src="{{g26.src}}" alt="{{g26.alt}}" style="display: block; width: 100%; height: 100%; object-fit: contain">
+              <button type="button" class="gal-ui" onClick="{{g26.prev}}" aria-label="이전 사진" style="opacity: {{g26.op}}; position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(255, 255, 255, 0.88); border: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #111111; left: 14px"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round"><path d="M15 5 L8 12 L15 19"></path></svg></button>
+              <button type="button" class="gal-ui" onClick="{{g26.next}}" aria-label="다음 사진" style="opacity: {{g26.op}}; position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(255, 255, 255, 0.88); border: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #111111; right: 14px"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round"><path d="M9 5 L16 12 L9 19"></path></svg></button>
+              <span class="gal-ui" style="opacity: {{g26.op}}; position: absolute; right: 14px; bottom: 14px; padding: 6px 10px; background: rgba(255, 255, 255, 0.88); font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.16em; color: #111111">{{g26.count}}</span>
+            </div>
+            <div role="group" aria-label="전시 전경 사진 목록" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px">
+              <sc-for list="{{g26.thumbs}}" as="t" hint-placeholder-count="21">
+                <button type="button" onClick="{{t.pick}}" aria-label="{{t.alt}}" style="flex: 0 0 auto; width: 92px; height: 62px; padding: 0; border: 2px solid {{t.border}}; background: #F4F2EE; cursor: pointer; opacity: {{t.op}}">
+                  <img src="{{t.src}}" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover">
+                </button>
+              </sc-for>
+            </div>
+          </div>
+          </div>
+
+          <!-- 서문 -->
+          <section style="display: flex; flex-wrap: wrap; gap: 32px 80px">
+            <div style="flex: 1 1 240px; max-width: 360px; display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #111111; padding-top: 24px">
+              <span style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.32em; color: #6B6B6B">EXHIBITION TEXT</span>
+              <span style="font-size: 18px">전시 서문</span>
+            </div>
+            <div style="flex: 999 1 520px; min-width: 0; max-width: 820px; display: flex; flex-direction: column; gap: 28px; padding-top: 24px; font-size: 17px; line-height: 2.05">
+              <p style="margin: 0; font-size: 22px; line-height: 1.9">종종 누군가를 이해했다고 믿는다. 그러나 그 순간에도 관계는 이미 다른 곳으로 흘러가고 있다. 하나의 이름으로 붙잡힌 관계는 멈춘 듯 보이지만, 그 아래에서는 보이지 않는 잡초의 뿌리처럼 쉼 없이 뻗고 갈라지며 새로운 길을 낸다.</p>
+              <p style="margin: 0">〈형상은 무너지고, 흔적은 자란다〉는 손과 잡초라는 두 형상을 통해 관계가 생겨나고 변해가는 과정을 담아낸 전시이다. 손은 타인에게 닿으려는 신체의 의지이자 감각의 통로이며, 잡초는 예측할 수 없는 생명력과 통제할 수 없는 관계의 증식을 상징한다. 작업은 두 형상이 관계를 맺어가는 과정을 접촉, 중첩, 침투, 침식, 생성, 해체의 여섯 단계로 펼쳐 놓는다. 이는 땅에 뿌리를 내리고, 서로 뒤엉키며 틈을 파고들고, 마침내 시들어 흩어지면서도 씨앗을 남기는 잡초의 생애에서 비롯된 것으로, 그 생태적 특성을 관계의 형성과 변화 과정에 겹쳐 놓은 것이다.</p>
+              <p style="margin: 0">관계는 땅에 떨어진 씨앗이 처음 흙에 닿듯, 두 형상이 각자의 윤곽을 지닌 채 조심스럽게 맞닿는 접촉에서 시작된다. 중첩의 단계에서는 이웃한 풀들이 서로 엉켜 자라듯 손의 선과 잡초의 선이 포개지며 어느 쪽에 속하는지 분간하기 어려운 지점이 생겨난다. 이어지는 침투에서는 잡초의 줄기가 손가락 사이로 스며드는 듯한 형상이 다른 형상의 영역 안으로 들어선다. 겹침과 스밈이 거듭되며 관계는 침식으로 나아간다. 잡초의 뿌리가 단단한 땅을 허물어 가듯 경계는 서서히 흐려지고, 손도 잡초도 아닌 혼성의 형상이 드러난다. 생성의 단계에서 그 형상은 빛을 향해 꽃을 피우듯 빛을 머금은 새로운 모습으로 떠오르지만, 마지막 해체에서는 흩어지며 빛이 머물던 자리가 어둠으로 바뀐다. 그럼에도 시든 잡초가 그 자리에 씨앗을 남기듯, 사라진 자리에는 흔적이 희미하게 남는다.</p>
+              <p style="margin: 0">이 여섯 단계는 차례로 이어지는 듯 보이지만, 하나의 화면 안에서도 어떤 부분은 막 맞닿기 시작하고 어떤 부분은 이미 흩어져 간다. 내가 너에게 스며드는 순간 너 또한 나를 허물고 있듯, 다가가는 일과 무너지는 일은 서로 떨어져 있지 않다. 그렇게 서로에게 남긴 흔적은 이전과는 다른 ‘나’와 ‘너’, 그리고 ‘우리’를 만들어 낸다.</p>
+              <p style="margin: 0">이 전시는 서로에게 남겨진 흔적을 기록하며, 관계 속에서 끊임없이 달라지는 경계의 궤적을 따라간다. 서로 다른 존재가 만나 영향을 주고받는 과정에서 경계는 형성되고 허물어지기를 반복하며, 그 안에서 각자의 모습 또한 달라진다. 이를 통해 하나의 모습으로 규정할 수 없는 존재와 관계의 변화를 살펴보고, 서로의 만남이 남기는 흔적과 그 의미를 드러내고자 한다.</p>
+            </div>
+          </section>
+
+        </article>
+      </sc-if>
+      <sc-if value="{{show24}}" hint-placeholder-val="{{ true }}">
+        <!-- 2024 길을 잃은 사람들 -->
+        <article style="display: flex; flex-direction: column; gap: 112px">
+          <div style="display: flex; flex-wrap: wrap; gap: 48px 80px; align-items: flex-start">
+            <div style="flex: 1 1 300px; max-width: 360px; display: flex; flex-direction: column; gap: 28px; border-top: 1px solid #111111; padding-top: 28px">
+              <div style="display: flex; justify-content: space-between; align-items: baseline">
+                <span style="font-family: 'Cormorant Garamond', serif; font-size: 32px">2024</span>
+                <span style="font-family: 'Jost', 'Noto Serif KR', sans-serif; font-size: 12px; letter-spacing: 0.2em; color: #6B6B6B">2인전</span>
+              </div>
+              <h2 style="margin: 0; font-family: 'Noto Serif KR', serif; font-weight: 300; font-size: 38px; line-height: 1.4">길을 잃은 사람들</h2>
+              <dl style="margin: 0; display: grid; grid-template-columns: 88px 1fr; gap: 12px 16px; font-size: 15px; line-height: 1.6">
+                <dt style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.2em; color: #6B6B6B; padding-top: 4px">ARTISTS</dt>
+                <dd style="margin: 0">김은우, 전혜림</dd>
+                <dt style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.2em; color: #6B6B6B; padding-top: 4px">VENUE</dt>
+                <dd style="margin: 0">공간아래, 서울</dd>
+                <dt style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.2em; color: #6B6B6B; padding-top: 4px">DATE</dt>
+                <dd style="margin: 0">2024. 09</dd>
+              </dl>
+              <p style="margin: 0; font-size: 16px; line-height: 1.95">시간과 기억, 그리고 그 안에 담긴 존재의 흔적을 두 작가의 작업으로 탐구한 2인전. 김은우는 잡초라는 생명체를 통해 시간과 생존, 인간의 관계성을 다룬다.</p>
+              <span style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.12em; color: #6B6B6B">Installation views</span>
+            </div>
+            <div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+            <div class="gal" onMouseMove="{{g24.wake}}" onMouseLeave="{{g24.sleep}}" onTouchStart="{{g24.touchStart}}" onTouchEnd="{{g24.touchEnd}}" style="position: relative; aspect-ratio: 3 / 2; background: #F4F2EE; overflow: hidden">
+              <img src="{{g24.src}}" alt="{{g24.alt}}" style="display: block; width: 100%; height: 100%; object-fit: contain">
+              <button type="button" class="gal-ui" onClick="{{g24.prev}}" aria-label="이전 사진" style="opacity: {{g24.op}}; position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(255, 255, 255, 0.88); border: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #111111; left: 14px"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round"><path d="M15 5 L8 12 L15 19"></path></svg></button>
+              <button type="button" class="gal-ui" onClick="{{g24.next}}" aria-label="다음 사진" style="opacity: {{g24.op}}; position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(255, 255, 255, 0.88); border: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #111111; right: 14px"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round"><path d="M9 5 L16 12 L9 19"></path></svg></button>
+              <span class="gal-ui" style="opacity: {{g24.op}}; position: absolute; right: 14px; bottom: 14px; padding: 6px 10px; background: rgba(255, 255, 255, 0.88); font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.16em; color: #111111">{{g24.count}}</span>
+            </div>
+            <div role="group" aria-label="전시 전경 사진 목록" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px">
+              <sc-for list="{{g24.thumbs}}" as="t" hint-placeholder-count="10">
+                <button type="button" onClick="{{t.pick}}" aria-label="{{t.alt}}" style="flex: 0 0 auto; width: 92px; height: 62px; padding: 0; border: 2px solid {{t.border}}; background: #F4F2EE; cursor: pointer; opacity: {{t.op}}">
+                  <img src="{{t.src}}" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover">
+                </button>
+              </sc-for>
+            </div>
+          </div>
+          </div>
+
+          <section style="display: flex; flex-wrap: wrap; gap: 32px 80px">
+            <div style="flex: 1 1 240px; max-width: 360px; display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #111111; padding-top: 24px">
+              <span style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.32em; color: #6B6B6B">EXHIBITION TEXT</span>
+              <span style="font-size: 18px">전시 서문</span>
+            </div>
+            <div style="flex: 999 1 520px; min-width: 0; max-width: 820px; display: flex; flex-direction: column; gap: 28px; padding-top: 24px; font-size: 17px; line-height: 2.05">
+              <p style="margin: 0; font-size: 22px; line-height: 1.9">세상은 끊임없이 우리에게 나아갈 방향을 묻는다. 어디로 나아가고 있는지, 길을 똑바로 걷고 있는지 확인받으면서, 길에서 탈선하지 말고 목적지를 향해 가야 한다고 요구받는 세상에서 살고 있다.</p>
+              <p style="margin: 0">〈길을 잃은 사람들〉은 미술대학 졸업을 위한 논문을 마치고, 레지던시를 끝낸 후 더 이상 나아갈 곳을 찾지 못한 두 명의 작가를 소개한다. 냉혹한 현실 속에서 길을 잃은 이들은 더 이상 자신이 누구인지, 무엇을 위해 작업하는지 알 수 없는 혼란에 빠진다.</p>
+              <p style="margin: 0">전시 속 두 작가의 작업에서는 시간은 우리 삶의 모든 순간을 관통하며, 기억은 그 시간의 흐름 속에서 형성된 흔적이다. 시간 속에서 자신을 찾고, 기억 속에서 존재를 확인하며, 그 흔적을 통해 현재를 살아간다. 〈길을 잃은 사람들〉전은 각각의 작업을 통해 시간과 기억, 그리고 그 안에 담긴 존재의 흔적을 탐구하는 전시이다. 이번 전시를 통해 이러한 혼돈 속에서 서 있는 두 작가의 내면을 들여다보고자 한다. 현실과 타협하며 살아가느라 점점 희미해진 작업의 열정, 작가로서의 정체성을 잃어가는 과정, 그리고 그 속에서 다시 자신을 찾고자 하는 몸부림을 담아낸다. 단순한 작품의 나열이 아닌, 숨겨진 곳에서 자신과 작품을 찾아가는 과정을 볼 수 있다.</p>
+              <p style="margin: 0">전혜림 작가는 ‘나, 증거’ 시리즈를 통해 자신의 존재를 사진과 기억 속에서 찾고자 한다. 그녀의 작업은 시간의 흐름 속에서 변질된 기억을 재구성하고, 그 기억을 통해 자신의 존재를 증명하려는 시도이다. 사진이라는 매체는 순간을 포착해 시간의 흐름을 멈추는 동시에, 그 순간을 기억 속에서 왜곡하거나 변형시킬 수도 있다. 전혜림은 이 모순된 특성을 활용해 자신의 자아를 탐구하고, 존재의 흔적을 남기는 작업을 이어가고 있다.</p>
+              <p style="margin: 0">김은우 작가는 잡초라는 자연의 생명체를 통해 시간과 생존, 그리고 인간의 관계성을 다룬다. 잡초는 끊임없이 변화하는 환경 속에서 자라며, 그 과정에서 다양한 기억과 흔적을 남긴다. 김은우는 이러한 잡초의 생명력을 통해 자신의 삶과 타인과의 관계를 비유하고, 시간의 흐름 속에서 형성된 타인과 자신의 ego를 탐구한다. 그의 작업은 불안정한 삶 속에서도 꿋꿋이 살아가는 인간의 모습과 그 흔적을 포착하려는 시도이다.</p>
+              <p style="margin: 0">〈길을 잃은 사람들〉은 두 작가가 시간 속에서 자신과 타인의 존재를 탐구하고, 그 기억과 흔적을 통해 삶의 의미를 재해석하는 과정을 보여준다. 탈출구를 찾기 위한 전시임과 동시에 확신과 탈선 없는 삶을 살아가기를 강요하는 세상에서 살고 있는 사람들을 위한 전시이다. 모두가 시간 속에서 남기는 흔적과 그 기억이 어떻게 현재를 구성하는지를 생각해볼 수 있는 기회를 제공하고자 한다. 전시 속 두 작가의 작업을 통해 당신도 자신이 남긴 흔적과 그 속에서 형성된 기억을 새롭게 바라볼 수 있기를 바라며, 작가 본인들의 그 끝에서 새로운 길을 찾을 수 있을지 기대하며 이 전시를 통해 삶의 새로운 방향을 모색해 볼 수 있길 바란다.</p>
+            </div>
+          </section>
+        </article>
+      </sc-if>
+      <sc-if value="{{showIndex}}" hint-placeholder-val="{{ true }}">
+        <!-- INDEX -->
+        <section style="display: flex; flex-direction: column; gap: 32px">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px">
+            <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 44px">Exhibition Index</h2>
+            <a href="cv.html" style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; padding: 12px 0">FULL CV →</a>
+          </div>
+          <div style="overflow-x: auto">
+            <table style="width: 100%; min-width: 880px; border-collapse: collapse; font-size: 15px; line-height: 1.6">
+              <thead>
+                <tr style="border-top: 1px solid #111111; border-bottom: 1px solid #E2E2E2; text-align: left; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.2em; color: #6B6B6B">
+                  <th style="padding: 16px 0; font-weight: 400; width: 140px">DATE</th>
+                  <th style="padding: 16px 0; font-weight: 400">TITLE</th>
+                  <th style="padding: 16px 0; font-weight: 400">VENUE</th>
+                  <th style="padding: 16px 0; font-weight: 400; width: 120px">CITY</th>
+                </tr>
+              </thead>
+              <tbody>
+                <sc-for list="{{index}}" as="r" hint-placeholder-count="15">
+                  <tr style="border-bottom: 1px solid #E2E2E2">
+                    <td style="padding: 18px 0; font-family: 'Cormorant Garamond', serif; font-size: 18px">{{r.date}}</td>
+                    <td style="padding: 18px 24px 18px 0">{{r.title}}</td>
+                    <td style="padding: 18px 24px 18px 0">{{r.venue}}</td>
+                    <td style="padding: 18px 0; color: #6B6B6B">{{r.city}}</td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </sc-if>
+    </div>
+  </main>
+
+  <footer style="background: #111111; color: #B5B0A8; padding: 48px 80px">
+    <div style="max-width: 1600px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.2em">
+      <span>© 2026 김은우</span>
+      <span style="display: flex; flex-wrap: wrap; gap: 8px 32px">
+        <a href="mailto:rladmsdn4908@naver.com" style="color: #FFFFFF">rladmsdn4908@naver.com</a>
+        <a href="https://instagram.com/nunu.road" style="color: #FFFFFF; letter-spacing: 0.1em">INSTAGRAM @nunu.road</a>
+      </span>
+    </div>
+  </footer>
+</div>
+</template>
+<div id="dc-root"></div>
+<script src="dc.js"></script>
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { view: 'all', ui26: false, ui24: false };
+    this._t = {};
+  }
+  wake(k) {
+    if (!this.state[k]) this.setState({ [k]: true });
+    clearTimeout(this._t[k]);
+    this._t[k] = setTimeout(() => this.setState({ [k]: false }), 1400);
+  }
+  sleep(k) {
+    clearTimeout(this._t[k]);
+    if (this.state[k]) this.setState({ [k]: false });
+  }
+  renderVals() {
+    const view = this.state.view;
+    const items = [
+      { id: 'all', year: '', label: '전체' },
+      { id: 'e26', year: '2026', label: '형상은 무너지고, 흔적은 자란다' },
+      { id: 'e24', year: '2024', label: '길을 잃은 사람들' },
+      { id: 'index', year: '', label: '전시 목록' }
+    ];
+    const menu = items.map((m) => ({
+      year: m.year, label: m.label,
+      color: m.id === view ? '#111111' : '#6B6B6B',
+      pick: () => this.setState({ view: m.id })
+    }));
+    const index = [
+      ['2026.11', '석사학위청구전 〈형상은 무너지고, 흔적은 자란다〉', '경희대학교 미술관 KUMA 3F', '서울'],
+      ['2024.12', '새로운 도약을 위한 만남', '리각미술관', '충남'],
+      ['2024.09', '김은우 전혜림 2인전 〈길을 잃은 사람들〉', '공간아래', '서울'],
+      ['2022.11', '어디로 가는지 아무도 몰라요', '미지정', '서울'],
+      ['2022.11', '마산현대미술관 결과보고전', '마산현대미술관', '마산'],
+      ['2022.05', '마산현대미술관 입주작가전', '마산현대미술관', '마산'],
+      ['2022.03', '제8회 친교 〈멘토, 멘티 FRIENDSHIP: MENTOR_MENTEE〉', '한원미술관', '서울'],
+      ['2021.11', '누리마실_광장 목소리', '—', '서울'],
+      ['2021.07', '삼각파도 – 표류하는 여권', '선아트스페이스', '서울'],
+      ['2021.06', '정렬방식 Sorting Method', 'KUMA', '서울'],
+      ['2021.06', '기저효과', 'gallery han', '일산'],
+      ['2021.05', '내향적 전시', 'space+', '안성'],
+      ['2020.12', '동네쌀롱제 성북 산책 드로잉', '스페이스 원오프', '서울'],
+      ['2020.12', '예술점빵', '예술램프', '서울'],
+      ['2018', '제2회 Save my art', '인사아트센터', '서울']
+    ].map(([date, title, venue, city]) => ({ date, title, venue, city }));
+    const G26 = [['images/02e72149d63a8032c08fd3ddeeb09e12.jpg', '석사학위청구전 전시장 정면 전경'], ['images/26eba5722b29920698312f3257b6d6b8.jpg', '양쪽 벽과 정면의 대형 2점'], ['images/735198126625683eb2b6a7bdc2cab927.jpg', '벽에 걸린 소품들을 옆에서 본 모습'], ['images/0baeb08141c5021bb4d3bf01a2c26a8f.jpg', '정면 대형 2점과 오른쪽 벽의 작품들'], ['images/1b77af49e3bf60f7286f8f76e882543b.jpg', '〈우리는 서로의 바깥을 품는다 1·2〉'], ['images/5f93a9c16d4e166d0f3604b38c32f0e1.jpg', '분홍 톤 작품들이 걸린 벽'], ['images/543a65b44656bc517576a41d18dbe6ad.jpg', '모서리 벽의 분홍 톤 작품들'], ['images/f44f58c56e98f49778fc004ded7ce5c2.jpg', '중앙 벽의 대형 작품과 소품들'], ['images/5f352ee51d547b595d3c0ea03dcd7236.jpg', '어두운 배경의 작품 3점'], ['images/84f6951ff8e4a9140d8aa6eb9413cda3.jpg', '세로 대형 작품과 소품 3점'], ['images/52e0b93dccad42586404c10b91aabcb7.jpg', '긴 벽을 따라 걸린 작품들'], ['images/a2c53bd5073247ab969036bfc553a2ce.jpg', '원형 작품이 보이는 전시장 입구 쪽'], ['images/8e48d3ee02c8e22e3757fbb3a9b0bd02.jpg', '대형 가로 작품과 소품 3점'], ['images/18c94550a035ec3d3439649d8aa5f926.jpg', '대형 가로 작품과 소품들이 걸린 벽'], ['images/a887cd1da63f299df453b650e3a4c266.jpg', '원형 작품과 오른쪽 벽의 세로 작품들'], ['images/53563a8e3dc87cd044093b7bf7cfee4f.jpg', '원형 작품 너머로 보이는 전시장'], ['images/a54802191f4eb655da1aa6fd13457ac7.jpg', '세로 작품 1점과 정사각형 작품 2점'], ['images/73095e8f358a1b2aba3e823641c0a435.jpg', '위아래로 나란히 건 〈안전지대 1·2〉'], ['images/7aa097770ecd1c4ab002c06226fc9f1a.jpg', '드로잉 시리즈가 걸린 두 벽'], ['images/9fe8399447c2e634890e434430823426.jpg', '드로잉 시리즈를 비스듬히 본 모습'], ['images/8c3d6d65bc86dce295e1db51c26ab429.jpg', '나란히 걸린 드로잉들'], ['images/125d8211d533b4021005cf4f79e56ff2.jpg', '드로잉 한 점을 가까이서 본 모습']];
+    const gi = this.state.g26 || 0, gn = G26.length;
+    const go = (k) => { this.setState({ g26: (k + gn) % gn }); this.wake('ui26'); };
+    const g26 = {
+      src: G26[gi][0], alt: G26[gi][1], count: (gi + 1) + ' / ' + gn,
+      op: this.state.ui26 ? 1 : 0, wake: () => this.wake('ui26'), sleep: () => this.sleep('ui26'),
+      prev: () => go(gi - 1), next: () => go(gi + 1),
+      touchStart: (e) => { this._tx = e.touches && e.touches[0] ? e.touches[0].clientX : null; },
+      touchEnd: (e) => { if (this._tx == null || !e.changedTouches) return; const dx = e.changedTouches[0].clientX - this._tx; this._tx = null; if (dx > 40) go(gi - 1); else if (dx < -40) go(gi + 1); },
+      thumbs: G26.map(([src, alt], k) => ({ src, alt, border: k === gi ? '#111111' : 'transparent', op: k === gi ? 1 : 0.55, pick: () => go(k) }))
+    };
+    const G24 = [['images/05c86aaa1a930df793fb85fc8b732da8.jpg', '초록 손 회화와 노란 회화 앞을 관람객이 지나가는 전시장 전경'], ['images/f73d6dce914f7e85dbc1ed6ffdab7049.jpg', '흰 벽에 걸린 대형 초록 회화와 노란 회화'], ['images/795f0b93a2feefb76e685938b4badf33.jpg', '기둥과 곡선 콘크리트 벽에 걸린 소품들'], ['images/ab5d72e0ad3413408686e0534691e4b2.jpg', '기둥에 붙인 마사천 회화 〈뱀딸기〉'], ['images/6e13a2067363abae5b562af5099bab00.jpg', '기둥 아래쪽에 붙인 마사천 회화'], ['images/2aefb439f78554f28c363fc59d5d4bdc.jpg', '기둥 윗부분에 붙인 잎사귀 마사천 회화'], ['images/6c160a64c9a2eaed17eb6f8c9b9d40ec.jpg', '전혜림 작가의 작품이 걸린 흰 벽 전경'], ['images/b5da4efc029f88b45d02d2c274b0ba31.jpg', '가벽에 걸린 전혜림 작가의 건물 회화와 주변 작품'], ['images/9d127d42ebd9c4dc3d2da84f2dced7d5.jpg', '유리창 너머로 보이는 전시장 내부'], ['images/5d5940a4e4cf9944a70bbe705369519b.jpg', '유리창 너머로 보이는 초록 손 회화']];
+    const hi = this.state.g24 || 0, hn = G24.length;
+    const go24 = (k) => { this.setState({ g24: (k + hn) % hn }); this.wake('ui24'); };
+    const g24 = {
+      src: G24[hi][0], alt: G24[hi][1], count: (hi + 1) + ' / ' + hn,
+      op: this.state.ui24 ? 1 : 0, wake: () => this.wake('ui24'), sleep: () => this.sleep('ui24'),
+      prev: () => go24(hi - 1), next: () => go24(hi + 1),
+      touchStart: (e) => { this._tx24 = e.touches && e.touches[0] ? e.touches[0].clientX : null; },
+      touchEnd: (e) => { if (this._tx24 == null || !e.changedTouches) return; const dx = e.changedTouches[0].clientX - this._tx24; this._tx24 = null; if (dx > 40) go24(hi - 1); else if (dx < -40) go24(hi + 1); },
+      thumbs: G24.map(([src, alt], k) => ({ src, alt, border: k === hi ? '#111111' : 'transparent', op: k === hi ? 1 : 0.55, pick: () => go24(k) }))
+    };
+    return { g24, g26, index, menu, show26: view === 'all' || view === 'e26', show24: view === 'all' || view === 'e24', showIndex: view === 'all' || view === 'index' };
+  }
+}
+</script>
+</body>
+</html>

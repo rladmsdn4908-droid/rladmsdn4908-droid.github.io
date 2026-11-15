@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김은우 — 작품</title>
+<meta name="description" content="화가 김은우의 포트폴리오. 손과 잡초의 형상을 통해 관계가 생겨나고 변해가는 과정을 그린다.">
+<meta property="og:title" content="김은우 — 작품">
+<meta property="og:description" content="화가 김은우의 포트폴리오. 손과 잡초의 형상을 통해 관계가 생겨나고 변해가는 과정을 그린다.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=Noto+Serif+KR:wght@300;400&amp;family=Jost:wght@300;400&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#111111;text-decoration:none}a:hover{color:#6B6B6B}
+img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;pointer-events:none}
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<template id="dc">
+<div style="background: #FFFFFF; color: #111111; font-family: 'Noto Serif KR', 'Cormorant Garamond', serif; font-weight: 300">
+
+  <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; padding: 32px 80px; border-bottom: 1px solid #E2E2E2">
+    <a href="index.html" style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; padding: 14px 0">MAIN</a>
+    <nav style="display: flex; flex-wrap: wrap; gap: 48px; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em">
+      <a href="works.html" style="padding: 14px 0; border-bottom: 1px solid #111111">WORKS</a>
+      <a href="exhibitions.html" style="padding: 14px 0">EXHIBITIONS</a>
+      <a href="text.html" style="padding: 14px 0">TEXT</a>
+      <a href="cv.html" style="padding: 14px 0">CV</a>
+      <a href="contact.html" style="padding: 14px 0">CONTACT</a>
+    </nav>
+  </header>
+
+  <main style="max-width: 1600px; margin: 0 auto; padding: 96px 80px 160px; display: flex; flex-wrap: wrap; gap: 64px 96px; align-items: flex-start">
+
+    <aside style="flex: 1 1 240px; max-width: 280px; display: flex; flex-direction: column; gap: 48px">
+      <div style="display: flex; flex-direction: column; gap: 16px">
+        <span style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.32em; color: #6B6B6B">WORKS · 작품</span>
+        <h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 72px; line-height: 1">Works</h1>
+        <span style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.12em; color: #6B6B6B">2022 — 2026</span>
+      </div>
+      <div role="group" aria-label="작품 메뉴" style="display: flex; flex-direction: column; border-top: 1px solid #111111">
+        <sc-for list="{{filters}}" as="f" hint-placeholder-count="6">
+          <button type="button" onClick="{{f.pick}}" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; background: none; border: none; border-bottom: 1px solid #E2E2E2; padding: 14px 0; min-height: 52px; cursor: pointer; text-align: left; font-family: 'Noto Serif KR', serif; font-size: 14px; color: {{f.color}}">
+            <span>{{f.label}}</span>
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 17px">{{f.count}}</span>
+          </button>
+        </sc-for>
+      </div>
+    </aside>
+
+    <div style="flex: 999 1 720px; min-width: 0">
+      <sc-if value="{{showGrid}}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 80px 48px; align-items: end">
+          <sc-for list="{{shown}}" as="w" hint-placeholder-count="12">
+            <figure style="margin: 0; display: flex; flex-direction: column; gap: 16px">
+              <button type="button" onClick="{{w.open}}" aria-label="{{w.title}} 크게 보기" style="display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in">
+              <sc-if value="{{w.hasImg}}" hint-placeholder-val="{{ false }}">
+                <img src="{{w.img}}" alt="{{w.title}}" style="display: block; width: 100%; aspect-ratio: {{w.ratio}}; object-fit: cover">
+              </sc-if>
+              <sc-if value="{{w.noImg}}" hint-placeholder-val="{{ true }}">
+                <span style="aspect-ratio: {{w.ratio}}; background: #ECE9E4; display: flex; align-items: center; justify-content: center">
+                  <span style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.24em; color: #5F5A54">[작품 이미지]</span>
+                </span>
+              </sc-if>
+              </button>
+              <figcaption style="display: flex; flex-direction: column; gap: 5px">
+                <span style="font-size: 15px; line-height: 1.55">{{w.title}}</span>
+                <span style="font-family: 'Jost', 'Noto Serif KR', sans-serif; font-size: 12px; line-height: 1.6; letter-spacing: 0.04em; color: #6B6B6B">{{w.meta}}</span>
+                <span style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.04em; color: #6B6B6B">{{w.size}}</span>
+              </figcaption>
+            </figure>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </main>
+
+  <footer style="background: #111111; color: #B5B0A8; padding: 48px 80px">
+    <div style="max-width: 1600px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.2em">
+      <span>© 2026 김은우</span>
+      <span style="display: flex; flex-wrap: wrap; gap: 8px 32px">
+        <a href="mailto:rladmsdn4908@naver.com" style="color: #FFFFFF">rladmsdn4908@naver.com</a>
+        <a href="https://instagram.com/nunu.road" style="color: #FFFFFF; letter-spacing: 0.1em">INSTAGRAM @nunu.road</a>
+      </span>
+    </div>
+  </footer>
+
+  <sc-if value="{{viewer.on}}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="작품 크게 보기" style="position: fixed; inset: 0; z-index: 100; background: #FFFFFF; display: flex; flex-direction: column; gap: 16px; padding: 20px 32px 28px; box-sizing: border-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px">
+        <span style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.2em; color: #6B6B6B">{{viewer.count}}</span>
+        <button type="button" onClick="{{viewer.close}}" style="min-height: 44px; padding: 0 4px; background: none; border: 0; cursor: pointer; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; color: #111111">CLOSE</button>
+      </div>
+      <div style="flex: 1 1 auto; min-height: 0; display: flex; align-items: center; gap: 16px">
+        <button type="button" onClick="{{viewer.prev}}" aria-label="이전 작품" style="flex: 0 0 auto; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background: none; border: 0; cursor: pointer; color: #111111">
+          <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round"><path d="M15 4 L7 12 L15 20"></path></svg>
+        </button>
+        <div style="flex: 1 1 auto; min-width: 0; height: 100%; display: flex; align-items: center; justify-content: center">
+          <sc-if value="{{viewer.hasImg}}" hint-placeholder-val="{{ false }}">
+            <div onContextMenu="{{viewer.block}}" style="display: flex; max-width: 100%">
+              <img src="{{viewer.img}}" alt="{{viewer.title}}" draggable="false" style="display: block; width: auto; height: auto; max-width: 100%; max-height: calc(100vh - 220px)">
+            </div>
+          </sc-if>
+          <sc-if value="{{viewer.noImg}}" hint-placeholder-val="{{ true }}">
+            <div style="height: min(60vh, 560px); max-width: 100%; aspect-ratio: {{viewer.ratio}}; background: #ECE9E4; display: flex; align-items: center; justify-content: center">
+              <span style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.24em; color: #5F5A54">[작품 이미지]</span>
+            </div>
+          </sc-if>
+        </div>
+        <button type="button" onClick="{{viewer.next}}" aria-label="다음 작품" style="flex: 0 0 auto; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background: none; border: 0; cursor: pointer; color: #111111">
+          <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round"><path d="M9 4 L17 12 L9 20"></path></svg>
+        </button>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; word-break: keep-all">
+        <span style="font-family: 'Noto Serif KR', serif; font-weight: 300; font-size: 17px; color: #111111">{{viewer.title}}</span>
+        <span style="font-family: 'Jost', 'Noto Serif KR', sans-serif; font-size: 12px; letter-spacing: 0.04em; color: #6B6B6B">{{viewer.meta}} · {{viewer.size}}</span>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</template>
+<div id="dc-root"></div>
+<script src="dc.js"></script>
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { active: '전체', open: -1, lens: null };
+  }
+  renderVals() {
+    const A = '캔버스에 아크릴릭';
+    const raw = [
+      ['안전지대 1', '31.8×40.9', 'images/a214237b6875828583ecad8168600b63.jpg', '1800 / 1440'],
+      ['안전지대 2', '31.8×40.9', 'images/0e29baa0534006f483246081df351710.jpg', '1800 / 1440'],
+      ['닮음이 번지는 동안 1', '45.5×37.9', 'images/1abba4065bfaca91c00c45473c6e1633.jpg', '1440 / 1800'],
+      ['닮음이 번지는 동안 2', '37.9×45.5', 'images/057fe55222a6dd0b3ccb48b8aee42742.jpg', '1800 / 1440'],
+      ['닮음이 번지는 동안 3', '45.5×37.9', 'images/d943c090b86463c761c1185e364b8643.jpg', '1440 / 1800'],
+      ['끈적하게 달라붙어 1', '45.5×53', 'images/1963711690837a83ca0567dd1d950d3f.jpg', '1800 / 1440'],
+      ['끈적하게 달라붙어 2', '33.4×45.5', 'images/126eae857d051c121cb70a7682fcf0d8.jpg', '1800 / 1440'],
+      ['끈적하게 달라붙어 3', '53×72.7', 'images/6aa2dce161a833bc5840555d2e987673.jpg', '1800 / 1440'],
+      ['끈적하게 달라붙어 4', '24.8×24.8', 'images/69324451799940efa458cbb2234d6a55.jpg', '1800 / 1800'],
+      ['서로의 흔적만 남아', '50×65.1', 'images/6077906fe5b1f5895cf085bb67d64cb6.jpg', '1800 / 1440'],
+      ['뿌리는 경계를 모른다 1', '24.8×24.8', 'images/f67a92243337bd77e97ee23ea8775153.jpg', '1800 / 1800'],
+      ['뿌리는 경계를 모른다 2', '24.8×24.8', 'images/f5f8a36f92cb9b882d92ba91c7b68307.jpg', '1800 / 1800'],
+      ['사라지고 자라나는 것 1', '45.5×37.9', 'images/49b361a422d00c8fda73f1b46fee2d33.jpg', '1440 / 1800'],
+      ['사라지고 자라나는 것 2', '53×40.9', 'images/95937e524a7d35f17347ba44d52f955d.jpg', '1 / 1'],
+      ['아무 말 없이 품고 지나간 빛 1', '24.8×24.8', 'images/729c146acdf716341107c9f65932b841.jpg', '1800 / 1800'],
+      ['아무 말 없이 품고 지나간 빛 2', '24.8×24.8', 'images/a2a6bec92552b836e4f90fe8916c2060.jpg', '1800 / 1800'],
+      ['나는 너를, 너는 나를 덮고', '90.9×60.6', 'images/d217bf7e326301a9623a386fdef27270.jpg', '1350 / 1800'],
+      ['닮음의 감염', '91×116.8', 'images/9d340022080b5c7af9f2f8d5646773a7.jpg', '1800 / 1440'],
+      ['서로 다른 것이 되어간다', '45.5×60.6', 'images/f84ba4c9059231dab4de59230d70654c.jpg', '1800 / 1440'],
+      ['어느 쪽도 아닌 채', '53×40.9', 'images/132fa1efd06eab84fddc10eb7245550f.jpg', '1440 / 1800'],
+      ['무너지고 자라난다', '130×162.2', 'images/bb369e4be4cb3f2562109b9894076b20.jpg', '1800 / 1200'],
+      ['조금씩 다른 것이 되어간다', '112.1×162.2', 'images/a78d9610453871dfd11b9443fcb8b585.jpg', '1800 / 1440'],
+      ['우리는 서로의 바깥을 품는다 1', '130×162.2', 'images/31717ecc3f3cec335c347b93b4033c86.jpg', '1800 / 1440'],
+      ['우리는 서로의 바깥을 품는다 2', '130×162.2', 'images/721b551d789cf1296999c1cf8c7ea43c.jpg', '1800 / 1440'],
+      ['사라지고 자라나는 것 3', '24.8×24.8', 'images/58571e03ba05598878a401f70e3d36c3.jpg', '1800 / 1200'],
+      ['경계의 잔상', '53×72.7', 'images/64273afbd2f004b1466c9806deaddf47.jpg', '1440 / 1800'],
+      ['너의 안에서 나는 다른 것이 된다', '45.5×37.9', 'images/a3ee714440db9bdeb937e28bfcac0859.jpg', '1800 / 1440'],
+      ['풀어진 경계에서', '53×40.9', 'images/176121b79c3ac475e7e0f984f37ada70.jpg', '1800 / 1440'],
+      ['우리가 하나라고 부르는 것들', '90.9×60.6', 'images/d030474eb64f98b9e43f220b98546468.jpg', '1800 / 1440'],
+      ['뽑으려던 손을 쓰다듬게 되기까지', '53×40.9', 'images/1d7781d7e64e48a09dd8b9e2b97ceb73.jpg', '1440 / 1800']
+    ];
+    const works = raw.map(([t, s, img, r]) => ({
+      title: t,
+      meta: '2026 · 캔버스에 아크릴릭',
+      size: s + ' cm',
+      ratio: r,
+      img: img,
+      series: '작업'
+    }));
+    const IMG = { '완벽한 타인': 'images/7c0a6fedbfc0158d6f55d796463481e2.jpg', '뱀딸기': 'images/0f360bbd9a79e46e8ca5548a0ffd7ce0.jpg', '나로부터 믿음': 'images/d406410d560ba5e98e3fb25f679f61f1.jpg', '나로부터 확신 (Firm faith from me)': 'images/b9e49889b787f25aaa6d5ee25599a0d5.jpg', '부딪히며 섞인다-1': 'images/9b504e10e6c8a682110da28397256da6.jpg', '사랑은 어디든 이어간다 1': 'images/8d45afad29ac6a5b28f05c7808e13190.jpg', '사랑은 어디에 있는가 1': 'images/ad8cbcedfd9b53b58fe780bf65bbb91b.jpg', '사랑은 어디든 이어간다 2': 'images/f29a16e383df8e328c331ce6af906380.jpg', '사랑은 어디에 있는가 2': 'images/cbee0921a40ec8cdb2b22ac99fb9cf51.jpg' };
+    const earlier = [
+      ['사랑은 어디에 있는가 1', 2024, 31.8, 31.8, '캔버스에 유채'],
+      ['사랑은 어디에 있는가 2', 2024, 31.8, 31.8, '캔버스에 유채'],
+      ['사랑은 어디든 이어간다 1', 2024, 24.2, 40.9, '캔버스에 유채'],
+      ['사랑은 어디든 이어간다 2', 2024, 27.3, 45.5, '캔버스에 유채'],
+      ['완벽한 타인', 2022, 130.3, 162.2, '캔버스에 유채'],
+      ['나로부터 믿음', 2022, 72.7, 90.9, '광목천에 유채'],
+      ['나로부터 확신 (Firm faith from me)', 2022, 31, 31, '광목천에 유채'],
+      ['부딪히며 섞인다-1', 2022, 53, 72.7, '광목천에 유채'],
+      ['뱀딸기', 2022, 35, 45, '마사천에 유채'],
+    ];
+    earlier.forEach(([t, y, a, b, m]) => works.push({
+      title: t,
+      meta: y + ' · ' + m,
+      size: a + '×' + b + ' cm',
+      ratio: b + ' / ' + a,
+      img: IMG[t] || '',
+      series: '작업'
+    }));
+    const DRAW = [
+      ['흰 민들레', 'images/c2d2043c8435dcd97f646b5ee0053bd0.jpg'],
+      ['토끼풀', 'images/f09e4add2c21633c6402ff250d436771.jpg'],
+      ['뱀딸기', 'images/dbcdc5ee952df1791345b28d54b14e38.jpg'],
+      ['씀바귀', 'images/de40e1a5634b43c6e7a8957e4c4f974c.jpg'],
+      ['개망초', 'images/103429f4c425792de61fd0ae8aae70df.jpg'],
+      ['냉이', 'images/5bcbc186527001f5a63b7ccaa94345d9.jpg'],
+      ['강아지풀', 'images/2af5a478c00c58677ae0ef4c31a5af4a.jpg'],
+      ['괭이밥', 'images/f80aec8742b79756db28d764451593d9.jpg'],
+      ['쇠비름', 'images/93fe2acfbbc5ac0b7048d7da1e7e25b8.jpg'],
+      ['박주가리', 'images/0752d211dc6d5ceb06bd2e8cc095366e.jpg'],
+      ['망초', 'images/9b000780a5e7022e8ede0e2b11f7bb2e.jpg']
+    ];
+    DRAW.forEach(([name, img], i) => {
+      works.push({
+        title: '잡초의 수집과 일상 드로잉 시리즈 ' + (i + 1) + ' — ' + name,
+        meta: '2022 · 종이에 연필, 색연필, 과슈, 아크릴릭',
+        size: '29.7×21 cm',
+        ratio: '21 / 29.7',
+        img: img,
+        series: '드로잉'
+      });
+    });
+    const active = this.state.active;
+    const labels = ['전체', '작업', '드로잉'];
+    const list = (active === '전체' ? works : works.filter((w) => w.series === active)).map((w, i) => Object.assign({}, w, {
+      hasImg: !!w.img, noImg: !w.img,
+      open: () => this.setState({ open: i })
+    }));
+    const n = list.length;
+    const oi = this.state.open;
+    const cur = oi >= 0 && oi < n ? list[oi] : null;
+    const Z = 2.6, R = 120;
+    const lens = this.state.lens;
+    const viewer = cur ? {
+      lensOn: !!(lens && cur.hasImg),
+      lx: lens ? (lens.x - R) + 'px' : '0px',
+      ly: lens ? (lens.y - R) + 'px' : '0px',
+      ix: lens ? (R - lens.x * Z) + 'px' : '0px',
+      iy: lens ? (R - lens.y * Z) + 'px' : '0px',
+      iw: lens ? (lens.w * Z) + 'px' : '0px',
+      ih: lens ? (lens.h * Z) + 'px' : '0px',
+      move: (e) => {
+        const t = e.touches && e.touches[0] ? e.touches[0] : e;
+        const r = e.currentTarget.getBoundingClientRect();
+        const x = t.clientX - r.left, y = t.clientY - r.top;
+        if (x < 0 || y < 0 || x > r.width || y > r.height) { this.setState({ lens: null }); return; }
+        this.setState({ lens: { x, y, w: r.width, h: r.height } });
+      },
+      leave: () => this.setState({ lens: null }),
+      block: (e) => { e.preventDefault(); },
+      on: true,
+      count: (oi + 1) + ' / ' + n,
+      title: cur.title, meta: cur.meta, size: cur.size, img: cur.img, ratio: cur.ratio,
+      hasImg: cur.hasImg, noImg: cur.noImg,
+      close: () => this.setState({ open: -1, lens: null }),
+      prev: () => this.setState({ open: (oi - 1 + n) % n, lens: null }),
+      next: () => this.setState({ open: (oi + 1) % n, lens: null })
+    } : { on: false };
+    return {
+      viewer,
+      filters: labels.map((l) => ({
+        label: l,
+        count: l === '전체' ? works.length : works.filter((w) => w.series === l).length,
+        color: l === active ? '#111111' : '#6B6B6B',
+        pick: () => this.setState({ active: l, open: -1 })
+      })),
+      showGrid: true,
+      shown: list
+    };
+  }
+}
+</script>
+</body>
+</html>

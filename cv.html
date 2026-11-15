@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김은우 — 이력</title>
+<meta name="description" content="화가 김은우의 포트폴리오. 손과 잡초의 형상을 통해 관계가 생겨나고 변해가는 과정을 그린다.">
+<meta property="og:title" content="김은우 — 이력">
+<meta property="og:description" content="화가 김은우의 포트폴리오. 손과 잡초의 형상을 통해 관계가 생겨나고 변해가는 과정을 그린다.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=Noto+Serif+KR:wght@300;400&amp;family=Jost:wght@300;400&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#111111;text-decoration:none}a:hover{color:#6B6B6B}
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<template id="dc">
+<div style="background: #FFFFFF; color: #111111; font-family: 'Noto Serif KR', 'Cormorant Garamond', serif; font-weight: 300">
+
+  <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; padding: 32px 80px; border-bottom: 1px solid #E2E2E2">
+    <a href="index.html" style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; padding: 14px 0">MAIN</a>
+    <nav style="display: flex; flex-wrap: wrap; gap: 48px; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em">
+      <a href="works.html" style="padding: 14px 0">WORKS</a>
+      <a href="exhibitions.html" style="padding: 14px 0">EXHIBITIONS</a>
+      <a href="text.html" style="padding: 14px 0">TEXT</a>
+      <a href="cv.html" style="padding: 14px 0; border-bottom: 1px solid #111111">CV</a>
+      <a href="contact.html" style="padding: 14px 0">CONTACT</a>
+    </nav>
+  </header>
+
+  <main style="max-width: 1600px; margin: 0 auto; padding: 96px 80px 160px; display: flex; flex-direction: column; gap: 128px">
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 32px; border-bottom: 1px solid #E2E2E2; padding-bottom: 32px">
+      <div style="display: flex; flex-direction: column; gap: 16px">
+        <span style="font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.32em; color: #6B6B6B">CV · 이력</span>
+        <h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 88px; line-height: 1">Curriculum Vitae</h1>
+      </div>
+      <a href="#" style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; border: 1px solid #111111; padding: 16px 28px">DOWNLOAD CV (PDF)</a>
+    </div>
+
+    <!-- CV -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(520px, 1fr)); gap: 104px 96px; align-items: start">
+      <sc-for list="{{sections}}" as="s" hint-placeholder-count="4">
+        <section style="display: flex; flex-direction: column; gap: 8px">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #111111; padding-top: 24px; padding-bottom: 8px">
+            <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 34px">{{s.en}}</h2>
+            <span style="font-family: 'Jost', 'Noto Serif KR', sans-serif; font-size: 12px; letter-spacing: 0.16em; color: #6B6B6B">{{s.ko}}</span>
+          </div>
+          <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column">
+            <sc-for list="{{s.rows}}" as="r" hint-placeholder-count="2">
+              <li style="display: flex; gap: 40px; padding: 16px 0; border-bottom: 1px solid #E2E2E2; font-size: 16px; line-height: 1.7; color: {{r.color}}">
+                <span style="flex: 0 0 84px; font-family: 'Cormorant Garamond', serif; font-size: 19px">{{r.year}}</span>
+                <span style="flex: 1 1 auto; min-width: 0">{{r.text}}</span>
+              </li>
+            </sc-for>
+          </ul>
+        </section>
+      </sc-for>
+    </div>
+  </main>
+
+  <footer style="background: #111111; color: #B5B0A8; padding: 48px 80px">
+    <div style="max-width: 1600px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.2em">
+      <span>© 2026 김은우</span>
+      <span style="display: flex; flex-wrap: wrap; gap: 8px 32px">
+        <a href="mailto:rladmsdn4908@naver.com" style="color: #FFFFFF">rladmsdn4908@naver.com</a>
+        <a href="https://instagram.com/nunu.road" style="color: #FFFFFF; letter-spacing: 0.1em">INSTAGRAM @nunu.road</a>
+      </span>
+    </div>
+  </footer>
+</div>
+</template>
+<div id="dc-root"></div>
+<script src="dc.js"></script>
+<script>
+class Component extends DCLogic {
+  renderVals() {
+    const row = ([year, text]) => ({ year, text, color: '#111111' });
+    return {
+      sections: [
+        { en: 'Education', ko: '학력', rows: [
+          ['2022', '경희대학교 일반대학원 미술학과 수료'],
+          ['2018', '대진대학교 회화전공 졸업']
+        ].map(row) },
+        { en: 'Solo Exhibition', ko: '개인전', rows: [
+          ['2026.11', '석사학위청구전 〈형상은 무너지고, 흔적은 자란다〉, 경희대학교 미술관 KUMA 3F, 서울']
+        ].map(row) },
+        { en: 'Group Exhibitions', ko: '단체전', rows: [
+          ['2024.12', '새로운 도약을 위한 만남, 리각미술관, 충남'],
+          ['2024.09', '김은우 전혜림 2인전 〈길을 잃은 사람들〉, 공간아래, 서울'],
+          ['2022.11', '어디로 가는지 아무도 몰라요, 미지정, 서울'],
+          ['2022.11', '마산현대미술관 결과보고전, 마산현대미술관, 마산'],
+          ['2022.05', '마산현대미술관 입주작가전, 마산현대미술관, 마산'],
+          ['2022.03', '제8회 친교 〈멘토, 멘티 FRIENDSHIP: MENTOR_MENTEE〉, 한원미술관, 서울'],
+          ['2021.11', '누리마실_광장 목소리, 서울'],
+          ['2021.07', '삼각파도 – 표류하는 여권, 선아트스페이스, 서울'],
+          ['2021.06', '정렬방식 Sorting Method, KUMA, 서울'],
+          ['2021.06', '기저효과, gallery han, 일산'],
+          ['2021.05', '내향적 전시, space+, 안성'],
+          ['2020.12', '동네쌀롱제 성북 산책 드로잉, 스페이스 원오프, 서울'],
+          ['2020.12', '예술점빵, 예술램프, 서울'],
+          ['2018', '제2회 Save my art, 인사아트센터, 서울']
+        ].map(row) },
+        { en: 'Residency', ko: '레지던시', rows: [
+          ['2022', '마산현대미술관 입주작가, 마산']
+        ].map(row) },
+        { en: 'Awards', ko: '수상', rows: [
+          ['2026', '제18회 한얼문예박물관 특별대전 금상'],
+          ['2026', '개관 제18주년 기념 한얼문예박물관 특별기획전 최우수상'],
+          ['2026', '제10회 세계를 하나로 국제한얼문화예술대전 특별상']
+        ].map(row) }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
