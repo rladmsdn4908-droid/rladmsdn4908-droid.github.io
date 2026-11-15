@@ -1,7 +1,6 @@
 /* 휴대폰 화면 보정 (공개용 사이트 전용) */
 @media (max-width: 640px) {
-  header, main, footer, section { padding-left: 24px !important; padding-right: 24px !important; }
-  body:has(.w-grid) header, body:has(.w-grid) main, body:has(.w-grid) footer { padding-left: 16px !important; padding-right: 16px !important; }
+  header, main, footer, section, .hero-row { padding-left: 16px !important; padding-right: 16px !important; }
   #dc-root header { padding-top: 16px !important; padding-bottom: 16px !important; }
   #dc-root nav { gap: 4px 22px !important; }
   #dc-root [style*="flex"] { min-width: 0; }
