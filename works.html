@@ -98,8 +98,8 @@ img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-tou
         <span style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.2em; color: #6B6B6B">{{viewer.count}}</span>
         <button type="button" onClick="{{viewer.close}}" style="min-height: 44px; padding: 0 4px; background: none; border: 0; cursor: pointer; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.24em; color: #111111">CLOSE</button>
       </div>
-      <div class="v-row" onTouchStart="{{viewer.touchStart}}" onTouchEnd="{{viewer.touchEnd}}" style="flex: 1 1 auto; min-height: 0; display: flex; align-items: center; gap: 16px">
-        <button type="button" class="v-arrow v-prev" onClick="{{viewer.prev}}" aria-label="이전 작품" style="flex: 0 0 auto; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background: none; border: 0; cursor: pointer; color: #111111">
+      <div class="v-row" onMouseMove="{{viewer.wake}}" onMouseLeave="{{viewer.sleep}}" onTouchStart="{{viewer.touchStart}}" onTouchEnd="{{viewer.touchEnd}}" style="flex: 1 1 auto; min-height: 0; display: flex; align-items: center; gap: 16px">
+        <button type="button" class="v-arrow v-prev" onClick="{{viewer.prev}}" aria-label="이전 작품" style="opacity: {{viewer.op}}; transition: opacity 0.35s ease; flex: 0 0 auto; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background: none; border: 0; cursor: pointer; color: #111111">
           <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round"><path d="M15 4 L7 12 L15 20"></path></svg>
         </button>
         <div style="flex: 1 1 auto; min-width: 0; height: 100%; display: flex; align-items: center; justify-content: center">
@@ -114,7 +114,7 @@ img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-tou
             </div>
           </sc-if>
         </div>
-        <button type="button" class="v-arrow v-next" onClick="{{viewer.next}}" aria-label="다음 작품" style="flex: 0 0 auto; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background: none; border: 0; cursor: pointer; color: #111111">
+        <button type="button" class="v-arrow v-next" onClick="{{viewer.next}}" aria-label="다음 작품" style="opacity: {{viewer.op}}; transition: opacity 0.35s ease; flex: 0 0 auto; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background: none; border: 0; cursor: pointer; color: #111111">
           <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round"><path d="M9 4 L17 12 L9 20"></path></svg>
         </button>
       </div>
@@ -132,7 +132,16 @@ img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-tou
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { active: '전체', open: -1, lens: null };
+    this.state = { active: '전체', open: -1, lens: null, vui: false };
+  }
+  vwake() {
+    if (!this.state.vui) this.setState({ vui: true });
+    clearTimeout(this._vt);
+    this._vt = setTimeout(() => this.setState({ vui: false }), 1400);
+  }
+  vsleep() {
+    clearTimeout(this._vt);
+    if (this.state.vui) this.setState({ vui: false });
   }
   renderVals() {
     const A = '캔버스에 아크릴릭';
@@ -223,7 +232,7 @@ class Component extends DCLogic {
     const labels = ['전체', '작업', '드로잉'];
     const list = (active === '전체' ? works : works.filter((w) => w.series === active)).map((w, i) => Object.assign({}, w, {
       hasImg: !!w.img, noImg: !w.img,
-      open: () => this.setState({ open: i })
+      open: () => { this.setState({ open: i }); this.vwake(); }
     }));
     const n = list.length;
     const oi = this.state.open;
@@ -247,15 +256,16 @@ class Component extends DCLogic {
       },
       leave: () => this.setState({ lens: null }),
       block: (e) => { e.preventDefault(); },
-      touchStart: (e) => { this._vx = e.touches && e.touches[0] ? e.touches[0].clientX : null; },
-      touchEnd: (e) => { if (this._vx == null || !e.changedTouches) return; const dx = e.changedTouches[0].clientX - this._vx; this._vx = null; if (dx > 40) this.setState({ open: (oi - 1 + n) % n, lens: null }); else if (dx < -40) this.setState({ open: (oi + 1) % n, lens: null }); },
+      touchStart: (e) => { this._vx = e.touches && e.touches[0] ? e.touches[0].clientX : null; this.vwake(); },
+      op: this.state.vui ? 1 : 0, wake: () => this.vwake(), sleep: () => this.vsleep(),
+      touchEnd: (e) => { if (this._vx == null || !e.changedTouches) return; const dx = e.changedTouches[0].clientX - this._vx; this._vx = null; if (dx > 40) { this.setState({ open: (oi - 1 + n) % n, lens: null }); this.vwake(); } else if (dx < -40) { this.setState({ open: (oi + 1) % n, lens: null }); this.vwake(); } },
       on: true,
       count: (oi + 1) + ' / ' + n,
       title: cur.title, meta: cur.meta, size: cur.size, img: cur.img, ratio: cur.ratio,
       hasImg: cur.hasImg, noImg: cur.noImg,
       close: () => this.setState({ open: -1, lens: null }),
-      prev: () => this.setState({ open: (oi - 1 + n) % n, lens: null }),
-      next: () => this.setState({ open: (oi + 1) % n, lens: null })
+      prev: () => { this.setState({ open: (oi - 1 + n) % n, lens: null }); this.vwake(); },
+      next: () => { this.setState({ open: (oi + 1) % n, lens: null }); this.vwake(); }
     } : { on: false };
     return {
       viewer,
