@@ -19,7 +19,6 @@ body{margin:0;background:#FFFFFF}
 a{color:#111111;text-decoration:none}a:hover{color:#6B6B6B}
 img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;pointer-events:none}
 .gal-ui{transition:opacity .35s ease}
-@media (hover: none){.gal-ui{opacity:1 !important}}
 </style>
 <link rel="stylesheet" href="site.css">
 </head>
@@ -267,7 +266,7 @@ class Component extends DCLogic {
       src: G26[gi][0], alt: G26[gi][1], count: (gi + 1) + ' / ' + gn,
       op: this.state.ui26 ? 1 : 0, wake: () => this.wake('ui26'), sleep: () => this.sleep('ui26'),
       prev: () => go(gi - 1), next: () => go(gi + 1),
-      touchStart: (e) => { this._tx = e.touches && e.touches[0] ? e.touches[0].clientX : null; },
+      touchStart: (e) => { this._tx = e.touches && e.touches[0] ? e.touches[0].clientX : null; this.wake('ui26'); },
       touchEnd: (e) => { if (this._tx == null || !e.changedTouches) return; const dx = e.changedTouches[0].clientX - this._tx; this._tx = null; if (dx > 40) go(gi - 1); else if (dx < -40) go(gi + 1); },
       thumbs: G26.map(([src, alt], k) => ({ src, alt, border: k === gi ? '#111111' : 'transparent', op: k === gi ? 1 : 0.55, pick: () => go(k) }))
     };
@@ -278,7 +277,7 @@ class Component extends DCLogic {
       src: G24[hi][0], alt: G24[hi][1], count: (hi + 1) + ' / ' + hn,
       op: this.state.ui24 ? 1 : 0, wake: () => this.wake('ui24'), sleep: () => this.sleep('ui24'),
       prev: () => go24(hi - 1), next: () => go24(hi + 1),
-      touchStart: (e) => { this._tx24 = e.touches && e.touches[0] ? e.touches[0].clientX : null; },
+      touchStart: (e) => { this._tx24 = e.touches && e.touches[0] ? e.touches[0].clientX : null; this.wake('ui24'); },
       touchEnd: (e) => { if (this._tx24 == null || !e.changedTouches) return; const dx = e.changedTouches[0].clientX - this._tx24; this._tx24 = null; if (dx > 40) go24(hi - 1); else if (dx < -40) go24(hi + 1); },
       thumbs: G24.map(([src, alt], k) => ({ src, alt, border: k === hi ? '#111111' : 'transparent', op: k === hi ? 1 : 0.55, pick: () => go24(k) }))
     };
