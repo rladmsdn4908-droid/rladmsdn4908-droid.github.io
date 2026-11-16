@@ -31,23 +31,36 @@
 
   // 해 고도별 위/아래 색. 모두 아주 밝은 색이라 검은 글씨가 잘 읽힌다.
   var MORNING = [
-    [-90, '#D2D7E1', '#E0E3EA'],   // 밤 — 푸른 회색, 조금 어둡게
-    [-12, '#D9DAE5', '#E5E5EC'],   // 새벽 어스름
-    [-4,  '#EEE6EC', '#F6EEEA'],   // 여명 — 옅은 라벤더·복숭아
+    [-90, '#232937', '#2D3341'],   // 밤 — 깊은 남색 회색
+    [-14, '#2A3042', '#353B4C'],   // 새벽 어스름
+    [-8,  '#5F5C75', '#726D80'],   // 동트기 전 — 짙은 라벤더
+    [-3,  '#D6C9D3', '#E6DBD9'],   // 여명 — 옅은 라벤더·복숭아
     [2,   '#F7E9E1', '#FBF3EC'],   // 해 뜰 무렵
     [12,  '#F9F2E8', '#FCF9F4'],   // 아침 햇살
     [30,  '#F9F9F6', '#FDFDFB'],   // 한낮
     [90,  '#FAFAF8', '#FEFEFD']
   ];
   var EVENING = [
-    [-90, '#D2D7E1', '#E0E3EA'],
-    [-12, '#D8D9E4', '#E4E5EB'],
-    [-4,  '#EDE3E8', '#F5EAE6'],   // 노을 끝 — 옅은 장밋빛 보라
+    [-90, '#232937', '#2D3341'],
+    [-14, '#2B3043', '#363B4D'],   // 늦은 저녁
+    [-8,  '#67596E', '#7A6873'],   // 노을 끝 — 짙은 장밋빛 보라
+    [-3,  '#E0CCCD', '#EDDBD4'],   // 해 진 직후
     [2,   '#F6E3DA', '#FAEFE7'],   // 해 질 녘
     [12,  '#F9EFE3', '#FCF7F0'],   // 늦은 오후
     [30,  '#F9F9F6', '#FDFDFB'],
     [90,  '#FAFAF8', '#FEFEFD']
   ];
+
+  // 날씨 색을 섞을 때, 밤에는 밝기는 그대로 두고 빛깔만 바꾼다
+  function tint(c, target, amt) {
+    var t = hex(target);
+    var k = Math.min(1, (c[0] + c[1] + c[2]) / (t[0] + t[1] + t[2]));
+    return mix(c, t.map(function (v) { return v * k; }), amt);
+  }
+  function lum(c) {
+    var v = c.map(function (x) { x /= 255; return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4); });
+    return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2];
+  }
 
   function skyColors(now) {
     var alt = sunAltitude(now);
@@ -60,13 +73,12 @@
     var top = mix(hex(a[1]), hex(b[1]), t), bottom = mix(hex(a[2]), hex(b[2]), t);
 
     // 날씨: 구름은 회색 쪽으로, 비는 차갑게, 눈은 밝고 차갑게, 안개는 뿌옇게
-    var grey = hex('#ECECEA');
-    top = mix(top, grey, weather.cloud * 0.55);
-    bottom = mix(bottom, grey, weather.cloud * 0.35);
-    if (weather.kind === 'rain') { top = mix(top, hex('#E2E7EC'), 0.45); bottom = mix(bottom, hex('#EBEEF1'), 0.3); }
-    if (weather.kind === 'snow') { top = mix(top, hex('#EEF2F6'), 0.5); bottom = mix(bottom, hex('#F7F9FB'), 0.4); }
-    if (weather.kind === 'fog')  { top = mix(top, hex('#EDEDEC'), 0.6); bottom = mix(bottom, hex('#F3F3F2'), 0.5); }
-    return { top: top, bottom: bottom };
+    top = tint(top, '#ECECEA', weather.cloud * 0.55);
+    bottom = tint(bottom, '#ECECEA', weather.cloud * 0.35);
+    if (weather.kind === 'rain') { top = tint(top, '#E2E7EC', 0.45); bottom = tint(bottom, '#EBEEF1', 0.3); }
+    if (weather.kind === 'snow') { top = tint(top, '#EEF2F6', 0.5); bottom = tint(bottom, '#F7F9FB', 0.4); }
+    if (weather.kind === 'fog')  { top = tint(top, '#EDEDEC', 0.6); bottom = tint(bottom, '#F3F3F2', 0.5); }
+    return { top: top, bottom: bottom, dark: (lum(top) + lum(bottom)) / 2 < 0.2 };
   }
 
   function kindOf(code) {
@@ -96,11 +108,15 @@
   }
 
   var layer;
+  // 배경이 어두우면 글씨를 밝게 바꾸도록 html에 sky-dark 표시를 단다
   function paint() {
-    if (!layer) return;
     var c = skyColors(new Date());
-    layer.style.background = 'linear-gradient(to bottom, ' + css(c.top) + ' 0%, ' + css(c.bottom) + ' 70%)';
+    var root = document.documentElement;
+    root.classList.toggle('sky-dark', c.dark);
+    root.style.background = css(c.bottom);
+    if (layer) layer.style.background = 'linear-gradient(to bottom, ' + css(c.top) + ' 0%, ' + css(c.bottom) + ' 70%)';
   }
+  paint();
 
   function start() {
     layer = document.createElement('div');
