@@ -46,6 +46,7 @@ def convert(src, outname):
 {body}
 </template>
 <div id="dc-root"></div>
+<script src="sky.js"></script>
 <script src="dc.js"></script>
 <script>
 {script}

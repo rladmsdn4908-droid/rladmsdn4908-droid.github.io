@@ -1,3 +1,10 @@
+/* 하늘 배경: sky.js가 그리는 옅은 배경이 페이지 맨 뒤에 깔린다 */
+html { background: #FAFAF8; }
+body { background: transparent !important; }
+#sky { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 1.2s ease; }
+#sky.ready { opacity: 1; }
+#dc-root [style*="background: #FFFFFF"]:not([role="dialog"]) { background: transparent !important; }
+
 /* 휴대폰 화면 보정 (공개용 사이트 전용) */
 @media (max-width: 640px) {
   header, main, footer, section, .hero-row { padding-left: 16px !important; padding-right: 16px !important; }
