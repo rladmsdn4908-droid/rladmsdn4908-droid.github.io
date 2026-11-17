@@ -114,6 +114,8 @@
     var root = document.documentElement;
     root.classList.toggle('sky-dark', c.dark);
     root.style.background = css(c.bottom);
+    root.style.setProperty('--sky-top', css(c.top));
+    root.style.setProperty('--sky-bottom', css(c.bottom));
     if (layer) layer.style.background = 'linear-gradient(to bottom, ' + css(c.top) + ' 0%, ' + css(c.bottom) + ' 70%)';
   }
   paint();
